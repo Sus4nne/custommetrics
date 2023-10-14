@@ -9,7 +9,7 @@ public class PastryService {
 
     CompositeMeterRegistry meterRegistry;
 
-    private Counter pastryCounter;
+    private final Counter pastryCounter;
 
     public PastryService(CompositeMeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
