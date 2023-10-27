@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class PastryService {
 
-    private final Counter pastryCounter;
+    private final Counter pastryItemCounter;
     private final Counter pastryOrderCounter;
 
     public PastryService(CompositeMeterRegistry meterRegistry) {
-        pastryCounter = meterRegistry.counter("pastry.amount.items");
+        pastryItemCounter = meterRegistry.counter("pastry.amount.items");
         pastryOrderCounter = meterRegistry.counter("pastry.amount.orders");
     }
 
     public String orderPastry(int amount) {
         pastryOrderCounter.increment();
-        pastryCounter.increment(amount);
+        pastryItemCounter.increment(amount);
         return String.format("Thank you for ordering %s pastries!", amount);
     }
 
